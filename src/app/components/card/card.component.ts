@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'my-card',
@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: [ './card.component.scss' ]
 })
 export class CardComponent  {
-  public header = 'My fancy header';
-  public body = 'My schmancy paragraph';
+  @Input() header;
+  @Input() body;
+
+  @Output() open = new EventEmitter();
 
   public onOpenClick() {
     console.log('Hola!');
+    this.open.emit();
   }
 }
